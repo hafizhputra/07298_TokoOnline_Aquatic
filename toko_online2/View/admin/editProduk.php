@@ -45,7 +45,7 @@
                                             <input type="hidden" name="namafoto" value="<?= $data['gambar_produk'] ?>">
                                             <div class="col-md-6 col-12">
                                                 <div class="form-group">
-                                                    <label for="readonlyInput">Kode Produk</label>
+                                                    <label for="readonlyInput">Id Produk</label>
                                                     <input type="text" class="form-control" id="readonlyInput" readonly="readonly" value="<?= $data['id_produk'] ?>" name="id">
                                                 </div>
                                             </div>
@@ -61,7 +61,7 @@
                                                 <fieldset class="form-group">
                                                     <label for="basicSelect">kategori produk</label>
                                                     <select class="form-select" id="basicSelect" aria-valuetext="<?= $data['nama_produk'] ?>" name="id_kategori">
-                                                        <?php foreach ($jenis as $row) : ?>
+                                                        <?php foreach ($kategori as $row) : ?>
                                                             <option value="<?= $row['id_kategori'] ?>">
                                                                 <?= $row['nama_kategori'] ?>
                                                             </option>

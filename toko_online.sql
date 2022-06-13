@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 10, 2022 at 12:21 AM
+-- Generation Time: Jun 13, 2022 at 11:55 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.3.28
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db_toko_online2`
+-- Database: `toko_online`
 --
 
 -- --------------------------------------------------------
@@ -38,10 +38,15 @@ CREATE TABLE `detail_transaksi` (
 --
 
 INSERT INTO `detail_transaksi` (`id_transaksi`, `id_produk`, `jumlah_produk`) VALUES
-(1, 2, 1),
-(2, 1, 1),
-(3, 3, 1),
-(4, 2, 1);
+(1, 16, 1),
+(1, 10, 2),
+(1, 11, 1),
+(1, 12, 1),
+(1, 13, 1),
+(2, 2, 1),
+(2, 6, 1),
+(2, 11, 1),
+(2, 13, 1);
 
 -- --------------------------------------------------------
 
@@ -51,7 +56,7 @@ INSERT INTO `detail_transaksi` (`id_transaksi`, `id_produk`, `jumlah_produk`) VA
 
 CREATE TABLE `kategori` (
   `id_kategori` int(11) NOT NULL,
-  `nama_kategori` varchar(15) DEFAULT NULL
+  `nama_kategori` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -59,8 +64,9 @@ CREATE TABLE `kategori` (
 --
 
 INSERT INTO `kategori` (`id_kategori`, `nama_kategori`) VALUES
-(8, 'ikan aquascape'),
-(9, 'pelet ikan');
+(14, 'ikan hias air tawar'),
+(15, 'pakan ikan'),
+(16, 'obat ikan');
 
 -- --------------------------------------------------------
 
@@ -71,10 +77,10 @@ INSERT INTO `kategori` (`id_kategori`, `nama_kategori`) VALUES
 CREATE TABLE `produk` (
   `id_produk` int(11) NOT NULL,
   `id_kategori` int(11) DEFAULT NULL,
-  `gambar_produk` varchar(25) DEFAULT NULL,
-  `nama_produk` varchar(25) DEFAULT NULL,
-  `harga_produk` varchar(15) DEFAULT NULL,
-  `stok_produk` varchar(20) DEFAULT NULL
+  `gambar_produk` varchar(100) DEFAULT NULL,
+  `nama_produk` varchar(100) DEFAULT NULL,
+  `harga_produk` varchar(100) DEFAULT NULL,
+  `stok_produk` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -82,9 +88,21 @@ CREATE TABLE `produk` (
 --
 
 INSERT INTO `produk` (`id_produk`, `id_kategori`, `gambar_produk`, `nama_produk`, `harga_produk`, `stok_produk`) VALUES
-(1, 8, 'blue.jpg', 'blue', '10000', '1'),
-(2, 8, 'blak.jpg', 'blak', '2000', '30000'),
-(3, 9, 'pelet super.jpg', 'pelet super', '25000', '20');
+(1, 14, 'Golden Checkerboard Discus.jpg', 'Golden Checkerboard Discus', '100000', '6'),
+(2, 14, 'Red Melon Discus.jpg', 'Red Melon Discus', '100000', '5'),
+(3, 14, 'Red Checkerboard Discus .jpg', 'Red Checkerboard Discus ', '100000', '7'),
+(4, 14, 'Red Turquoise Discus.jpg', 'Red Turquoise Discus', '100000', '7'),
+(5, 14, 'Blue Diamond Discus.jpg', 'Blue Diamond Discus', '150000', '4'),
+(6, 14, 'Chinese Algae Eater.jpg', 'Chinese Algae Eater', '8000', '10'),
+(7, 14, 'corydoras albino.jpg', 'corydoras albino', '8000', '10'),
+(8, 14, 'Synodontis alga eater.jpg', 'Synodontis alga eater', '5000', '10'),
+(10, 15, 'Tropical Fish Pelet.jpg', 'Tropical Fish Pelet', '12000', '20'),
+(11, 15, 'Ocean Free Super Guppy.jpg', 'Ocean Free Super Guppy', '50000', '8'),
+(12, 16, 'Garam Ikan.jpg', 'Garam Ikan', '5000', '12'),
+(13, 16, 'Acriflavine obat Kuning.jpg', 'Acriflavine obat Kuning', '8000', '8'),
+(14, 14, 'Japan Blue.jpg', 'Japan Blue', '15000', '20'),
+(15, 14, 'red moscow.jpg', 'red moscow', '90000', '10'),
+(16, 14, 'black moscow .jpg', 'black moscow ', '20000', '40');
 
 -- --------------------------------------------------------
 
@@ -107,8 +125,7 @@ CREATE TABLE `register` (
 
 INSERT INTO `register` (`id_member`, `nama_member`, `password_member`, `username_member`, `notelp_member`, `alamat_member`) VALUES
 (3, 'hafizh putra', '123', 'hafizh123', '081', 'perak'),
-(4, 'fabio', '123', 'fabio123', '081', 'benowo'),
-(6, 'lionel putra', '123', 'lionel123', '081', 'jl malang');
+(6, 'fabio putra', '123', 'fabio123', '081', 'jl jakarta');
 
 -- --------------------------------------------------------
 
@@ -120,7 +137,7 @@ CREATE TABLE `transaksi` (
   `id_transaksi` int(11) NOT NULL,
   `id_member` int(11) DEFAULT NULL,
   `tgl_transaksi` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `status_transaksi` int(11) DEFAULT NULL
+  `status_transaksi` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -128,10 +145,8 @@ CREATE TABLE `transaksi` (
 --
 
 INSERT INTO `transaksi` (`id_transaksi`, `id_member`, `tgl_transaksi`, `status_transaksi`) VALUES
-(1, 3, '2022-06-08 17:49:46', 1),
-(2, 3, '2022-06-08 12:12:52', 1),
-(3, 3, '2022-06-08 14:33:45', 1),
-(4, 6, '2022-06-08 20:04:58', 2);
+(1, 3, '2022-06-13 21:47:14', 2),
+(2, 6, '2022-06-13 21:49:20', 2);
 
 --
 -- Indexes for dumped tables
@@ -178,7 +193,7 @@ ALTER TABLE `transaksi`
 -- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `produk`
