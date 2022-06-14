@@ -146,7 +146,6 @@ class PelangganModel
 
   
 
-
     public function ProsesUpdateProfil($id, $nama,$password , $username, $no_telp, $alamat)
     {
         $sql = "UPDATE register SET nama_member = '$nama',password_member = '$password' ,username_member = '$username',notelp_member = '$no_telp',alamat_member = '$alamat' Where id_member = $id";

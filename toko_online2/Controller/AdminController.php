@@ -141,9 +141,29 @@ class AdminController
     {
         $id = $_GET['id'];
         if ($this->model->prosesDeleteKategori($id)) {
-            header("location: index.php?page=admin&aksi=daftarProduk&pesan=berhasil hapus jenis produk");
+            header("location: index.php?page=admin&aksi=daftarProduk&pesan=berhasil hapus kategori");
         } else {
-            header("location: index.php?page=admin&aksi=daftarProduk&pesan=Gagal hapus jenis produk");
+            header("location: index.php?page=admin&aksi=daftarProduk&pesan=Gagal hapus kategori");
+        }
+    }
+
+    public function editKategori()
+    {
+        $id = $_GET['id'];
+        $data = $this->model->getKategoriById($id);
+        extract($data);
+        require_once("View/admin/editKategori.php");
+    }
+
+    public function updateKategori()
+    {
+        $id = $_POST['id'];
+        $nama = $_POST['nama'];
+       
+        if ($this->model->ProsesUpdateKategori($id, $nama)) {
+            header("location: index.php?page=admin&aksi=daftarProduk&pesan=Berhasil Ubah Data");
+        } else {
+            header("location: index.php?page=admin&aksi=daftarProduk&pesan=Gagal Ubah Data");
         }
     }
 

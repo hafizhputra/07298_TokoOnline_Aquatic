@@ -68,7 +68,7 @@ class AdminModel
 
         public function getKategoriProduk()
         {
-                $sql = "SELECT id_kategori, nama_kategori From kategori";
+                $sql = "SELECT id_kategori, nama_kategori From kategori ";
                 $query = koneksi()->query($sql);
                 $hasil = [];
                 while ($data = $query->fetch_assoc()) {
@@ -77,6 +77,8 @@ class AdminModel
                 return $hasil;
         }
 
+
+     
         public function prosesStoreKategori($nama)
         {
                 $sql = "INSERT into kategori(nama_kategori) value ('$nama')";
@@ -87,6 +89,25 @@ class AdminModel
         {
                 $sql = "DELETE from kategori where id_kategori = $id";
                 return koneksi()->query($sql);
+        }
+
+        public function getKategoriById($id)
+        {
+                $sql = "SELECT 
+                         kategori.id_kategori,
+                         kategori.nama_kategori
+
+                        from kategori
+                        
+                        Where kategori.id_kategori = '$id'";
+                $query = koneksi()->query($sql);
+                return $query->fetch_assoc();
+        }
+
+        public function ProsesUpdateKategori($id, $nama)
+        {
+            $sql = "UPDATE kategori SET nama_kategori = '$nama' Where id_kategori like '$id'";
+            return koneksi()->query($sql);
         }
 
         public function getTransaksi()

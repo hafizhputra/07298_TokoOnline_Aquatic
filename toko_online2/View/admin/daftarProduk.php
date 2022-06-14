@@ -85,6 +85,7 @@
                           <tr>
                             <td class="text-bold-500"><?= $row['nama_kategori'] ?></td>
                             <td>
+                            <a href="index.php?page=admin&aksi=editKategori&id=<?= $row['id_kategori'] ?>" class="btn btn-warning">Edit</a>
                               <a href="index.php?page=admin&aksi=hapusKategori&id=<?= $row['id_kategori'] ?>" class="btn btn-danger">Hapus</a>
                             </td>
                           </tr>

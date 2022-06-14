@@ -130,7 +130,11 @@ if (isset($_GET['page']) && isset($_GET['aksi'])) {
                     $admin->storeKategori();
                 } else if ($aksi == 'hapusKategori') {
                     $admin->deleteKategori();
-
+                } else if ($aksi == 'editKategori') {
+                    $admin->editKategori();
+                } else if ($aksi == 'updateKategori') {
+                    $admin->updateKategori();
+                    
                 // -----> transaksi 
                 } else if ($aksi == 'transaksi') {
                     $admin->transaksi();

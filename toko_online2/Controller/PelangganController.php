@@ -49,7 +49,7 @@ class PelangganController
         require_once("View/pelanggan/profil.php");
     }
 
-    // -----> update produk 
+    // -----> update profil 
     public function update()
     {
         $id = $_POST['id'];
