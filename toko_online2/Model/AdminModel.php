@@ -188,7 +188,7 @@ class AdminModel
 
         public function jumlahTransaksiproses()
         {
-                $sql = "SELECT COUNT(id_transaksi) as jumlah from transaksi ";
+                $sql = "SELECT COUNT(id_transaksi) as jumlah from transaksi where status_transaksi like 1  ";
                 $query = koneksi()->query($sql);
                 $hasil = $query->fetch_assoc();
                 return $hasil;
@@ -196,7 +196,7 @@ class AdminModel
 
         public function jumlahPelanggan()
         {
-                $sql = "SELECT COUNT(id_member) as jumlah from transaksi";
+                $sql = "SELECT COUNT(id_member) as jumlah from register";
                 $query = koneksi()->query($sql);
                 $hasil = $query->fetch_assoc();
                 return $hasil;

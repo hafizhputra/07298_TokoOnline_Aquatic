@@ -35,6 +35,25 @@
                 <section class="row">
                     <div class="col-12 col-lg-10">
                         <div class="row">
+
+                        <div class="col-6 col-lg-3 col-md-6">
+                                <div class="card">
+                                    <div class="card-body px-3 py-4-5">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="stats-icon green">
+                                                    <i class="iconly-boldAdd-User"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h6 class="text-muted font-semibold">Pelanggan</h6>
+                                                <h6 class="font-extrabold mb-0"><?= $pelanggan['jumlah'] ?></h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="col-6 col-lg-3 col-md-6">
                                 <div class="card">
                                     <div class="card-body px-3 py-4-5">
@@ -45,7 +64,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-8">
-                                                <h6 class="text-muted font-semibold">Total Menu</h6>
+                                                <h6 class="text-muted font-semibold">Total Produk</h6>
                                                 <h6 class="font-extrabold mb-0"><?= $jumlahmenu['jumlah'] ?></h6>
                                             </div>
                                         </div>
@@ -80,7 +99,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-8">
-                                                <h6 class="text-muted font-semibold">Proses</h6>
+                                                <h6 class="text-muted font-semibold">Proses Transaksi</h6>
                                                 <h6 class="font-extrabold mb-0"><?= $proses['jumlah'] ?></h6>
                                             </div>
                                         </div>
@@ -88,23 +107,7 @@
                                 </div>
                             </div>
                             
-                            <div class="col-6 col-lg-3 col-md-6">
-                                <div class="card">
-                                    <div class="card-body px-3 py-4-5">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="stats-icon green">
-                                                    <i class="iconly-boldAdd-User"></i>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <h6 class="text-muted font-semibold">Pelanggan</h6>
-                                                <h6 class="font-extrabold mb-0"><?= $pelanggan['jumlah'] ?></h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                   
                         </div>
                     </div>
                 </section>

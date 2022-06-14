@@ -10,6 +10,8 @@ class AdminController
 
     public function index()
     {
+        $pelanggan = $this->model->jumlahPelanggan();
+        extract($pelanggan);
         $jumlahmenu = $this->model->jumlahMenu();
         extract($jumlahmenu);
         $jumlahkategori = $this->model->jumlahKategori();
@@ -18,8 +20,7 @@ class AdminController
         // extract($success);
         $proses = $this->model->jumlahTransaksiproses();
         extract($proses);
-        $pelanggan = $this->model->jumlahPelanggan();
-        extract($pelanggan);
+    
         require_once("View/admin/index.php");
     }
 
