@@ -58,7 +58,7 @@ class PelangganController
         $username = $_POST['username'];
         $no_telp = $_POST['notelp'];
         $alamat = $_POST['alamat'];
-        if ($this->model->ProsesUpdateProfil($id, $nama,$password , $username, $no_telp,$alamat)) {
+        if ($this->model->ProsesUpdateProfil($id, $nama, $password , $username, $no_telp, $alamat)) {
             header("location: index.php?page=pelanggan&aksi=view&pesan=Berhasil Ubah Data");
         } else {
             header("location: index.php?page=pelanggan&aksi=edit&pesan=Gagal Ubah Data");

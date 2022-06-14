@@ -19,7 +19,8 @@ class PelangganModel
         produk.harga_produk,
         produk.stok_produk
         from produk
-        JOIN kategori ON (produk.id_kategori = kategori.id_kategori)";
+        JOIN kategori ON (produk.id_kategori = kategori.id_kategori)
+        order by produk.id_produk ASC";
         $query = koneksi()->query($sql);
         $hasil = [];
         while ($data = $query->fetch_assoc()) {
@@ -146,7 +147,7 @@ class PelangganModel
 
   
 
-    public function ProsesUpdateProfil($id, $nama,$password , $username, $no_telp, $alamat)
+    public function ProsesUpdateProfil($id, $nama, $password , $username, $no_telp, $alamat)
     {
         $sql = "UPDATE register SET nama_member = '$nama',password_member = '$password' ,username_member = '$username',notelp_member = '$no_telp',alamat_member = '$alamat' Where id_member = $id";
         return koneksi()->query($sql);

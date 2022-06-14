@@ -12,7 +12,9 @@ class AdminModel
                         produk.harga_produk,
                         produk.stok_produk
                         from produk
-                        JOIN kategori ON (produk.id_kategori = kategori.id_kategori)";
+        
+                        JOIN kategori ON (produk.id_kategori = kategori.id_kategori)
+                        order by produk.id_produk ASC";
                 $query = koneksi()->query($sql);
                 $hasil = [];
                 while ($data = $query->fetch_assoc()) {
@@ -155,19 +157,9 @@ class AdminModel
 
         public function prosesdeletePelanggan($id)
         {
-                $sql = "DELETE from register where id_member =$id";
+                $sql = "DELETE from register where id_member = $id";
                 return koneksi()->query($sql);
         }
-
-     
-
-      
-    
-
-     
-
-      
-
       
 
         public function jumlahMenu()
