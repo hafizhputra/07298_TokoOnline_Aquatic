@@ -80,6 +80,12 @@ ob_start();
                             </a>
                         </li>
 
+                        <li class="sidebar-item ">
+                            <a href="index.php?page=admin&aksi=pembayaran" class='sidebar-link'>
+                                <i class="bi bi-credit-card-2-back-fill"></i>
+                                <span>Pembayaran</span>
+                            </a>
+                        </li>
                      
 
                         <li class="sidebar-item ">

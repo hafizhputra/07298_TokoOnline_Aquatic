@@ -202,6 +202,35 @@ class AdminController
         }
     }
 
+    public function pembayaran()
+    {
+      
+        $pembayaran = $this->model->getPembayaran();
+        extract($pembayaran);
+        require_once("View/admin/pembayaran.php");
+    }
+
+
+    public function konfirmasiPembayaran()
+    {
+        $idAdmin = $_SESSION['user'];
+        $id = $_GET['id'];
+        if ($this->model->prosesKonfirmasiPembayaran($id, $idAdmin)) {
+            header("location: index.php?page=admin&aksi=pembayaran&pesan=Berhasil konfirmasi");
+        } else {
+            header("location: index.php?page=admin&aksi=pembayaran&pesan=Gagal konfirmasi");
+        }
+    }
+
  
+    public function batalkanPembayaran()
+    {
+        $id = $_GET['id'];
+        if ($this->model->prosesPembatalanPembayaran($id)) {
+            header("location: index.php?page=admin&aksi=pembayaran&pesan=Berhasil dibatalkan");
+        } else {
+            header("location: index.php?page=admin&aksi=pembayaran&pesan=Gagal dibatalkan");
+        }
+    }
 
 }

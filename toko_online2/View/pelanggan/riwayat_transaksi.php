@@ -46,7 +46,11 @@
                                                             if ($row['status_transaksi'] == 1) { ?>
                                                                 <span class="badge bg-danger">Belum Bayar</span>
                                                             <?php } else if ($row['status_transaksi'] == 2) { ?>
+                                                                <span class="badge bg-warning">menunggu konfirmasi pembayaran</span>
+                                                            <?php } else if ($row['status_transaksi'] == 3) { ?>
                                                                 <span class="badge bg-success">Lunas</span>
+                                                            <?php } else if ($row['status_transaksi'] == 4) { ?>
+                                                                <span class="badge bg-success">kosong</span>
                                                             <?php } ?>
                                                         </td>
 

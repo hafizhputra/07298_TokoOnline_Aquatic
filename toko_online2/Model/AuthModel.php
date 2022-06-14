@@ -17,9 +17,9 @@
          *  @param $npm untuk data npm
          *  @param $password untuk data password 
          */
-        public function prosesAuthPelanggan($email,$password)
+        public function prosesAuthPelanggan($username,$password)
         {
-            $sql = "SELECT * from register where username_member = '$email' AND password_member ='$password' ";
+            $sql = "SELECT * from register where username_member = '$username' AND password_member ='$password' ";
             $query = koneksi()->query($sql);
             return $query->fetch_assoc();
         }

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - ngofee</title>
+    <title>Login - aquatic</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
@@ -28,7 +28,7 @@
                         <p class="auth-subtitle mb-5">Portal Masuk website Aquatic</p>
                         <form action="index.php?page=auth&aksi=authPelanggan" method="POST">
                             <div class="form-group position-relative has-icon-left mb-4">
-                                <input type="text" class="form-control form-control-xl" placeholder="Email" name="email">
+                                <input type="text" class="form-control form-control-xl" placeholder="Username" name="username">
                                 <div class="form-control-icon">
                                     <i class="bi bi-person"></i>
                                 </div>

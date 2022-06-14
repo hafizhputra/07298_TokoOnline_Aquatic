@@ -90,6 +90,14 @@ if (isset($_GET['page']) && isset($_GET['aksi'])) {
                 // -----> riwayat transaksi 
             } else if ($aksi == 'riwayatTransaksi') {
                 $pelanggan->riwayatTransaksi();
+
+                // -----> pembayaran 
+            } else if ($aksi == 'pembayaran') {
+                $pelanggan->pembayaran();
+
+                // -----> update pembayaran di detail transaksi 
+             } else if ($aksi == 'storePembayaran') {
+                $pelanggan->storePembayaran();
           
             } else {
                 require_once "View/menu/error-404.php";
@@ -142,6 +150,18 @@ if (isset($_GET['page']) && isset($_GET['aksi'])) {
                 // -----> kirim transaksi 
                 } else if ($aksi == 'kirimTransaksi') {
                     $admin->kirimtransaksi();
+
+                // ----->pembayaran
+                } else if ($aksi == 'pembayaran') {
+                    $admin->pembayaran();
+              
+                //-----> konfirmasi pembayaran
+                } else if ($aksi == 'konfirmasiPembayaran') {
+                    $admin->konfirmasiPembayaran();
+                
+                } else if ($aksi == 'pembatalanPembayaran') {
+                    $admin->batalkanPembayaran();
+
                  }else {
                     require_once "View/menu/error-404.php";
                 }

@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Transaksi</title>
+  <title>Pembayaran</title>
 
   <link rel="preconnect" href="https://fonts.gstatic.com" />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
@@ -30,47 +30,49 @@
 
       <div class="page-heading">
         <div class="page-title">
-          <h3>Transaksi</h3>
+          <h3>Pembayaran</h3>
         </div>
       </div>
       <div class="page-content">
         <section class="section">
           <div class="card">
             <div class="card-header">
-              <h4 class="card-title">Data Transaksi</h4>
+              <h4 class="card-title">Data Pembayaran</h4>
             </div>
             <div class="card-body">
               <table class="table table-striped" id="table1">
                 <thead>
                   <tr>
                     <th>ID Transaksi</th>
-                    <th>Nama Pelanggan</th>
-                    <th>Tanggal Transaksi</th>
+                    <th>total bayar</th>
                     <th>Status</th>
-               
-                   
+                    <th>Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <?php foreach ($data as $row) : ?>
+                  <?php foreach ($pembayaran as $row) : ?>
                     <tr>
                       <td><?= $row['id_transaksi'] ?></td>
-                      <td><?= $row['nama_member'] ?></td>
-                      <td><?= $row['tgl_transaksi'] ?></td>
-                      
+                      <td><?= $row['total_bayar'] ?></td>
+                    
+                     
                     
                       <td><?php
                           if ($row['status_transaksi'] == 2) { ?>
-                             <span class="badge bg-warning">Menunggu konfirmasi</span>
-                          <?php } else if ($row['status_transaksi'] == 3) { ?>
-                             <span class="badge bg-success">Lunas</span>
-                           <?php } else if ($row['status_transaksi'] == 4) { ?>
-                              <span class="badge bg-dark">Dibatalkan Admin</span>
+                          <span class="badge bg-warning">Menunggu Konfirmasi</span>
+                        <?php } else if ($row['status_transaksi'] == 3) { ?>
+                          <span class="badge bg-secondary">Lunas</span>
+                          <?php } else if ($row['status_transaksi'] == 4) { ?>
+                          <span class="badge bg-dark">dibatalkan</span>
+                       
                         <?php } ?>
                       </td>
-
-                     
-                   
+                      <td>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                          <a href="index.php?page=admin&aksi=konfirmasiPembayaran&id=<?= $row['id_transaksi'] ?>" class="btn btn-primary">Konfirmasi</a>
+                          <a href="index.php?page=admin&aksi=pembatalanPembayaran&id=<?= $row['id_transaksi'] ?>" class="btn btn-danger">Batalkan</a>
+                        </div>
+                      </td>
                     </tr>
                   <?php endforeach; ?>
                 </tbody>

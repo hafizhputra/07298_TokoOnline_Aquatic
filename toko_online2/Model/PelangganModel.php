@@ -254,10 +254,35 @@ class PelangganModel
         }
     }
 
+    public function getPembayaran($id)
+    {
+        $sql = "SELECT id_transaksi FROM transaksi where id_transaksi = '$id'";
+        $query = koneksi()->query($sql);
+        return $query->fetch_assoc();
+    }
  
 
+    public function getNominalTotalbayar($id)
+    {
+        $sql = "SELECT SUM(detail_transaksi.jumlah_produk*produk.harga_produk) as total from detail_transaksi
+                JOIN produk on produk.id_produk = detail_transaksi.id_produk 
+                JOIN transaksi  on transaksi.id_transaksi = detail_transaksi.id_transaksi 
+                where transaksi.id_transaksi = '$id'";
+        $query = koneksi()->query($sql);
+        return $query->fetch_assoc();
+    }
 
 
+    public function prosesStorePembayaran($id, $nominal)
+    {
+        $sql = "UPDATE detail_transaksi SET total_bayar = $nominal where id_transaksi ='$id'";
+       koneksi()->query($sql);
+
+       $sql = "UPDATE transaksi SET status_transaksi = 2 where id_transaksi ='$id'";
+        return koneksi()->query($sql);
+    }
+
+ 
 
 
 }

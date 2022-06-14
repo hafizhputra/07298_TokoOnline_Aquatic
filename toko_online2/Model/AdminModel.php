@@ -121,7 +121,7 @@ class AdminModel
                         transaksi.status_transaksi  
                         from transaksi
                         join register on transaksi.id_member=register.id_member
-                        where transaksi.status_transaksi = 1 ORDER BY status_transaksi";
+                        where transaksi.status_transaksi > 1 ORDER BY transaksi.status_transaksi";
                 $query = koneksi()->query($sql);
                 $hasil = [];
                 while ($data = $query->fetch_assoc()) {
@@ -160,7 +160,36 @@ class AdminModel
                 $sql = "DELETE from register where id_member = $id";
                 return koneksi()->query($sql);
         }
+
+
+        public function getPembayaran()
+        {
+                $sql = "SELECT transaksi.id_transaksi, detail_transaksi.total_bayar,
+                        transaksi.status_transaksi
+                        from detail_transaksi
+                         JOIN transaksi ON (detail_transaksi.id_transaksi = transaksi.id_transaksi) 
+                        where transaksi.status_transaksi = 2
+                        group by id_transaksi";
+                $query = koneksi()->query($sql);
+                $hasil = [];
+                while ($data = $query->fetch_assoc()) {
+                        $hasil[] = $data;
+                }
+                return $hasil;
+        }
       
+
+        public function prosesKonfirmasiPembayaran($id)
+        {
+                $sql = "UPDATE transaksi SET status_transaksi = 3 where id_transaksi = '$id'";
+                return koneksi()->query($sql);
+        }
+
+        public function prosespembatalanPembayaran($id)
+        {
+                $sql = "UPDATE transaksi SET status_transaksi = 4 where id_transaksi = '$id'";
+                return koneksi()->query($sql);
+        }
 
         public function jumlahMenu()
         {

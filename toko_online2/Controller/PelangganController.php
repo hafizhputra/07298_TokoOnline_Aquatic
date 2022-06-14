@@ -128,7 +128,33 @@ class PelangganController
         require_once("View/pelanggan/riwayat_transaksi.php");
     }
 
+
+    // -----> pembayaran 
+    public function pembayaran()
+    {
+        $id = $_GET['id'];
+        $data = $this->model->getPembayaran($id);
+        $nominal = $this->model->getNominalTotalbayar($id);
+        extract($nominal);
+        extract($data);
+    
+        require_once("View/pelanggan/pembayaran.php");
+    }
+
+
+    // -----> update total pembayaran 
+    public function storePembayaran()
+    {
+        $id = $_POST['id'];
+        $nominal = $_POST['nominal'];
+ 
+        if ($this->model->prosesStorePembayaran($id,$nominal)) {
+            header("location: index.php?page=pelanggan&aksi=view&pesan=pembayaran berhasil");
+        } else {
+            header("location: index.php?page=pelanggan&aksi=riwayatTransaksi&pesan=pembayaran gagal");
+        }
+        
+    }
     
 
-    
 }

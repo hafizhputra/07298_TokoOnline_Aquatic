@@ -69,9 +69,9 @@ class AuthController
     // -----> login pelanggan pakai database 
     public function authPelanggan()
     {
-        $email = $_POST['email'];
+        $username = $_POST['username'];
         $password = $_POST['password'];
-        $data = $this->model->prosesAuthPelanggan($email, $password);
+        $data = $this->model->prosesAuthPelanggan($username, $password);
         if ($data) {
             $_SESSION['username_member'] = $data;
             header("location: index.php?page=pelanggan&aksi=view&pesan=berhasil login");
