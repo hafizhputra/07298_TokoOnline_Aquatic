@@ -116,7 +116,9 @@ class PelangganModel
         // return koneksi()->query($sql);
         $sql = "INSERT into detail_transaksi (id_transaksi,id_produk,jumlah_produk) 
         Values('$kode','$idproduk',1)";
+
          return koneksi()->query($sql);
+      
     }
 
     public function getidtrx($id)
@@ -175,7 +177,7 @@ class PelangganModel
             produk.nama_produk,
             detail_transaksi.jumlah_produk,
             detail_transaksi.id_transaksi,
-            produk.harga_produk 
+            produk.harga_produk
             FROM detail_transaksi  
             JOIN produk on produk.id_produk = detail_transaksi.id_produk 
             JOIN transaksi on transaksi.id_transaksi = detail_transaksi.id_transaksi 
@@ -199,17 +201,27 @@ class PelangganModel
         if (!empty($produkExist)) {
             $produk = $this->getItemQtyCartByid($idproduk, $kode);
             $sql = "UPDATE detail_transaksi SET jumlah_produk = $produk+1 where id_transaksi ='$kode' AND id_produk = '$idproduk'";
-            return koneksi()->query($sql);
+            koneksi()->query($sql);
+
+            
         } else {
             $sql = "INSERT into detail_transaksi(id_transaksi,id_produk,jumlah_produk) Values('$kode','$idproduk',1)";
-            return koneksi()->query($sql);
+            koneksi()->query($sql);
+
+             // -----> coba jumlah stok berkurang 
+             $sql = "UPDATE produk SET stok_produk=stok_produk-1 where id_produk = '$idproduk'";
+             return koneksi()->query($sql);
         }
     }
 
     public function prosesDeleteFromCart($id, $idtransaksi)
     {
+         // -----> coba jumlah stok bertambah 
+         $sql = "UPDATE produk SET stok_produk=stok_produk+1 where id_produk = '$id'";
+         koneksi()->query($sql);
+
         $sql = "DELETE FROM detail_transaksi where id_produk = '$id' AND id_transaksi = '$idtransaksi'";
-        koneksi()->query($sql);
+        return koneksi()->query($sql);
     }
 
     public function prosesSimpanTransaksi($id)
@@ -220,6 +232,7 @@ class PelangganModel
         // $kode = KodePembayaran();
         // $this->tambahpembayaran($kode, $id);
         $sql = "UPDATE transaksi SET tgl_transaksi = '$tgl',status_transaksi = 1 where id_transaksi = '$id'";
+     
         return koneksi()->query($sql);
     }
 
@@ -235,14 +248,17 @@ class PelangganModel
 
     public function getItemByid($idtransaksi, $idproduk)
     {
+
+
         $sql = "SELECT * From detail_transaksi where id_transaksi = '$idtransaksi' AND id_produk = '$idproduk'";
         $query = koneksi()->query($sql);
         return $query->fetch_assoc();
     }
 
+
     public function getItemQtyCartByid($idproduk, $idtransaksi)
     {
-        $sql = "SELECT jumlah_produk from detail_transaksi 
+        $sql = "SELECT detail_transaksi.jumlah_produk from detail_transaksi 
         where id_transaksi = '$idtransaksi' AND id_produk = '$idproduk'";
         $query = koneksi()->query($sql);
         $item = $query->fetch_assoc();
@@ -275,11 +291,17 @@ class PelangganModel
 
     public function prosesStorePembayaran($id, $nominal)
     {
+
+        
+     
+
         $sql = "UPDATE detail_transaksi SET total_bayar = $nominal where id_transaksi ='$id'";
        koneksi()->query($sql);
 
        $sql = "UPDATE transaksi SET status_transaksi = 2 where id_transaksi ='$id'";
-        return koneksi()->query($sql);
+       return koneksi()->query($sql);
+
+
     }
 
  

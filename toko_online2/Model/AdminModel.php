@@ -207,17 +207,17 @@ class AdminModel
                 return $hasil;
         }
 
-        // public function jumlahTransaksiSelesai()
-        // {
-        //         $sql = "SELECT COUNT(transaksi_id) as jumlah from transaksi where status_id = 4";
-        //         $query = koneksi()->query($sql);
-        //         $hasil = $query->fetch_assoc();
-        //         return $hasil;
-        // }
+        public function jumlahTransaksiSelesai()
+        {
+                $sql = "SELECT COUNT(id_transaksi) as jumlah from transaksi where status_transaksi = 3";
+                $query = koneksi()->query($sql);
+                $hasil = $query->fetch_assoc();
+                return $hasil;
+        }
 
         public function jumlahTransaksiproses()
         {
-                $sql = "SELECT COUNT(id_transaksi) as jumlah from transaksi where status_transaksi like 1  ";
+                $sql = "SELECT COUNT(id_transaksi) as jumlah from transaksi where status_transaksi=2  ";
                 $query = koneksi()->query($sql);
                 $hasil = $query->fetch_assoc();
                 return $hasil;

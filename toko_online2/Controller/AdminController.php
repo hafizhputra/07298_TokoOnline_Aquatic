@@ -16,11 +16,10 @@ class AdminController
         extract($jumlahmenu);
         $jumlahkategori = $this->model->jumlahKategori();
         extract($jumlahkategori);
-        // $success = $this->model->jumlahTransaksiSelesai();
-        // extract($success);
         $proses = $this->model->jumlahTransaksiproses();
         extract($proses);
-    
+        $success = $this->model->jumlahTransaksiSelesai();
+        extract($success);
         require_once("View/admin/index.php");
     }
 

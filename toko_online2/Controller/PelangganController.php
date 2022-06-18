@@ -81,6 +81,7 @@ class PelangganController
     public function inputKeranjang()
     {
         $id = $_GET['id'];
+        
       
         $idpembeli = $_SESSION['username_member']['id_member'];
         // echo $idpembeli;
@@ -112,6 +113,7 @@ class PelangganController
     public function simpanTransaksi()
     {
         $id = $_GET['idtrx'];
+       
         if ($this->model->prosesSimpanTransaksi($id)) {
             header("location: index.php?page=pelanggan&aksi=riwayatTransaksi&pesan=berhasil simpan transaksi");
         } else {
@@ -147,6 +149,8 @@ class PelangganController
     {
         $id = $_POST['id'];
         $nominal = $_POST['nominal'];
+        
+       
  
         if ($this->model->prosesStorePembayaran($id,$nominal)) {
             header("location: index.php?page=pelanggan&aksi=view&pesan=pembayaran berhasil");

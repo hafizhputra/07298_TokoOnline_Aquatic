@@ -159,6 +159,7 @@ if (isset($_GET['page']) && isset($_GET['aksi'])) {
                 } else if ($aksi == 'konfirmasiPembayaran') {
                     $admin->konfirmasiPembayaran();
                 
+                //-----> pembatalan pembayaran
                 } else if ($aksi == 'pembatalanPembayaran') {
                     $admin->batalkanPembayaran();
 
