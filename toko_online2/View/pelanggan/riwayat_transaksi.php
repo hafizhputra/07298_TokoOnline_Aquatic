@@ -50,7 +50,7 @@
                                                             <?php } else if ($row['status_transaksi'] == 3) { ?>
                                                                 <span class="badge bg-success">Lunas</span>
                                                             <?php } else if ($row['status_transaksi'] == 4) { ?>
-                                                                <span class="badge bg-success">kosong</span>
+                                                                <span class="badge bg-dark">dibatalkan admin</span>
                                                             <?php } ?>
                                                         </td>
 
